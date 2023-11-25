@@ -1,9 +1,10 @@
-"use client";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Product } from "./types";
+'use client';
+import type { Product } from './types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 export const productAPI = createApi({
-  reducerPath: "productAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://fakestoreapi.com/products/" }),
+  reducerPath: 'productAPI',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://fakestoreapi.com/products/' }),
   endpoints: (builder) => ({
     getProductById: builder.query<Product, number>({
       query: (id) => `${id}`,
@@ -19,9 +20,5 @@ export const productAPI = createApi({
     }),
   }),
 });
-export const {
-  useGetProductByIdQuery,
-  useGetAllProductsQuery,
-  useGetAllCategoriesQuery,
-  useGetProductsInCategoryQuery,
-} = productAPI;
+
+export const { useGetProductByIdQuery, useGetAllProductsQuery, useGetAllCategoriesQuery, useGetProductsInCategoryQuery } = productAPI;

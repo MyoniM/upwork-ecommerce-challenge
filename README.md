@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+> Demo test application for react
 
-## Getting Started
+## Development Setup
 
-First, run the development server:
+Instructions for Mac OSX and Windows
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Mac OSX
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Get the code. Clone this git repository and check out the latest release:
+    ```bash
+    git clone git@github.com:Maruf-S/cedar-valley.git
+    cd cedar-valley
+    ```
+2. Ensure, hyperkit/qemu, colima, docker, and docker-compose are installed:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```bash
+    # Note: You need 20 GB free space before doing this.
+    # Install packages
+    if [ "$(uname -m)" == "x86_64" ]; then
+      brew install hyperkit
+    else  # hyperkit not supported on arm64
+      brew install qemu
+    fi
+    brew install docker docker-compose kubectl colima
+    colima start
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    # After this, you'll have a daemon up and running that will be able to run
+    # the app and mount the volumes.
+    ```
+3. Run Docker Compose In dev environment
+    ```bash
+    docker-compose -f docker-compose.yml up
+    ```
 
-## Learn More
+This will run the app at localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+### Windows
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Get the code. Clone this git repository and check out the latest release:
+    ```bash
+    git clone git@github.com:Maruf-S/cedar-valley.git
+    cd cedar-valley
+    ```
+2. Install docker desktop:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Run Docker Compose In dev environment
+    ```bash
+    docker-compose -f docker-compose.yml up
+    ```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This will run the app at localhost:3000
